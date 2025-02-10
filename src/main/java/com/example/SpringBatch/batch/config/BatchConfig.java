@@ -11,11 +11,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BatchConfig {
 
-    @Bean
-    public Job job(JobRepository jobRepository, Step printHelloStep) {
-        return new JobBuilder("job", jobRepository)
-                .start(printHelloStep)
-                .incrementer(new RunIdIncrementer())
-                .build();
-    }
+//    @Bean
+//    public Job helloWorldJob(JobRepository jobRepository, Step printHelloStep) {
+//        return new JobBuilder("helloWorldJob", jobRepository)
+//                .start(printHelloStep)
+//                .incrementer(new RunIdIncrementer())
+//                .build();
+//    }
 }
