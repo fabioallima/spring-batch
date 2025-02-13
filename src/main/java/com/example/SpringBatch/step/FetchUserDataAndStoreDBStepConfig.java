@@ -36,6 +36,12 @@ public class FetchUserDataAndStoreDBStepConfig {
                 .reader(fetchUserDataReader)
                 .processor(selectFieldsUserDataProcessor)
                 .writer(insertUserDataDBWriter)
+                .faultTolerant()
+                .skip(Exception.class)
+                .skipLimit(10)
+                .retry(Exception.class)
+                .retryLimit(3)
+                .noRollback(Exception.class)
                 .build();
     }
 }

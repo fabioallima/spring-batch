@@ -17,9 +17,11 @@ public class PrintHelloTasklet implements Tasklet {
     @Value("${name}")
     private String name;
 
+    private static int executionCount = 1;
+
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-        System.out.println("Hello, " + name + "!");
+        System.out.println("Hello, " + name + "! Execution " + executionCount++);
 
         return RepeatStatus.FINISHED;
     }

@@ -11,16 +11,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class JobConfig {
+public class UserRequestJobConfig {
 
-    private static Logger logger = LoggerFactory.getLogger(JobConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(UserRequestJobConfig.class);
 
     @Bean
-    public Job job(Step fetchUserDataAndStoreDBStep, JobRepository jobRepository) {
+    public Job userRequestJob(Step fetchUserDataAndStoreDBStep, JobRepository jobRepository) {
 
         logger.info("Start job execution ...");
 
-        return new JobBuilder("job", jobRepository)
+        return new JobBuilder("userRequestJob", jobRepository)
                 .start(fetchUserDataAndStoreDBStep)
                 .incrementer(new RunIdIncrementer())
                 .build();
