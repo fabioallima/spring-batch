@@ -1,4 +1,4 @@
-package com.example.SpringBatch.batch.config;
+package com.example.SpringBatch.job;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +16,9 @@ public class JobConfig {
     private static Logger logger = LoggerFactory.getLogger(JobConfig.class);
 
     @Bean
-    public Job job(JobRepository jobRepository, Step fetchUserDataAndStoreDBStep) {
+    public Job job(Step fetchUserDataAndStoreDBStep, JobRepository jobRepository) {
 
-        logger.info("Start job execution...");
+        logger.info("Start job execution ...");
 
         return new JobBuilder("job", jobRepository)
                 .start(fetchUserDataAndStoreDBStep)

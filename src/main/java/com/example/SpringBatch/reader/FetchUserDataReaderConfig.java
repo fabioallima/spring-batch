@@ -1,4 +1,4 @@
-package com.example.SpringBatch.batch.reader;
+package com.example.SpringBatch.reader;
 
 import com.example.SpringBatch.domain.ResponseUser;
 import com.example.SpringBatch.dto.UserDTO;
@@ -20,7 +20,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Configuration
 public class FetchUserDataReaderConfig implements ItemReader<UserDTO> {

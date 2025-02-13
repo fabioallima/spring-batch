@@ -1,4 +1,4 @@
-package com.example.SpringBatch.batch.processor;
+package com.example.SpringBatch.processor;
 
 import com.example.SpringBatch.dto.UserDTO;
 import com.example.SpringBatch.entities.User;

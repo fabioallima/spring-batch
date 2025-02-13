@@ -1,4 +1,4 @@
-package com.example.SpringBatch.batch.tasklet;
+package com.example.SpringBatch.tasklet;
 
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;

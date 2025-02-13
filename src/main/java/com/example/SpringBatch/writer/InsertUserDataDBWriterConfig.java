@@ -1,4 +1,4 @@
-package com.example.SpringBatch.batch.writer;
+package com.example.SpringBatch.writer;
 
 import com.example.SpringBatch.dto.UserDTO;
 import com.example.SpringBatch.entities.User;
