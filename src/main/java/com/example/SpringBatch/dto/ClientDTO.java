@@ -2,7 +2,7 @@ package com.example.SpringBatch.dto;
 
 import java.time.Instant;
 
-public record UserDTO(
+public record ClientDTO(
         Long id,
         String login,
         String name,

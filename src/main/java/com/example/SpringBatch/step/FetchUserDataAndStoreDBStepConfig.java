@@ -1,11 +1,10 @@
 package com.example.SpringBatch.step;
 
-import com.example.SpringBatch.dto.UserDTO;
-import com.example.SpringBatch.entities.User;
+import com.example.SpringBatch.dto.ClientDTO;
+import com.example.SpringBatch.entities.Client;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
-import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -27,12 +26,12 @@ public class FetchUserDataAndStoreDBStepConfig {
     private int chunkSize;
 
     @Bean
-    public Step fetchUserDataAndStoreDBStep(ItemReader<UserDTO> fetchUserDataReader,
-                                            ItemProcessor<UserDTO, User> selectFieldsUserDataProcessor,
-                                            ItemWriter<User> insertUserDataDBWriter,
+    public Step fetchUserDataAndStoreDBStep(ItemReader<ClientDTO> fetchUserDataReader,
+                                            ItemProcessor<ClientDTO, Client> selectFieldsUserDataProcessor,
+                                            ItemWriter<Client> insertUserDataDBWriter,
                                             JobRepository jobRepository) {
         return new StepBuilder("fetchUserDataAndStoreDBStep", jobRepository)
-                .<UserDTO, User>chunk(chunkSize, transactionManager)
+                .<ClientDTO, Client>chunk(chunkSize, transactionManager)
                 .reader(fetchUserDataReader)
                 .processor(selectFieldsUserDataProcessor)
                 .writer(insertUserDataDBWriter)

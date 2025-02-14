@@ -1,6 +1,6 @@
 package com.example.SpringBatch.domain;
 
-import com.example.SpringBatch.dto.UserDTO;
+import com.example.SpringBatch.dto.ClientDTO;
 import lombok.*;
 
 import java.util.List;
@@ -9,13 +9,13 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class ResponseUser {
-    private List<UserDTO> content;
+    private List<ClientDTO> content;
 
-    public List<UserDTO> getContent() {
+    public List<ClientDTO> getContent() {
         return content;
     }
 
-    public void setContent(List<UserDTO> content) {
+    public void setContent(List<ClientDTO> content) {
         this.content = content;
     }
 }

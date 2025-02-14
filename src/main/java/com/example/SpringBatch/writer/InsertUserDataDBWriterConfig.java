@@ -1,7 +1,6 @@
 package com.example.SpringBatch.writer;
 
-import com.example.SpringBatch.dto.UserDTO;
-import com.example.SpringBatch.entities.User;
+import com.example.SpringBatch.entities.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemWriter;
@@ -19,10 +18,10 @@ public class InsertUserDataDBWriterConfig {
     private static Logger logger = LoggerFactory.getLogger(InsertUserDataDBWriterConfig.class);
 
     @Bean
-    public ItemWriter<User> insertUserDataDBWriter(@Qualifier("appDS") DataSource dataSource) {
+    public ItemWriter<Client> insertUserDataDBWriter(@Qualifier("appDS") DataSource dataSource) {
         logger.info("[WRITER STEP] Inserting user data ...");
 
-        return new JdbcBatchItemWriterBuilder<User>()
+        return new JdbcBatchItemWriterBuilder<Client>()
                 .dataSource(dataSource)
                 .sql("INSERT INTO tb_user (login, name, avatar_url) VALUES (:login, :name, :avatarUrl)")
                 .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())

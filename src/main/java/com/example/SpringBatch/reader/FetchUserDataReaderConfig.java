@@ -1,7 +1,7 @@
 package com.example.SpringBatch.reader;
 
 import com.example.SpringBatch.domain.ResponseUser;
-import com.example.SpringBatch.dto.UserDTO;
+import com.example.SpringBatch.dto.ClientDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.annotation.AfterChunk;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-public class FetchUserDataReaderConfig implements ItemReader<UserDTO> {
+public class FetchUserDataReaderConfig implements ItemReader<ClientDTO> {
 
     private static Logger logger = LoggerFactory.getLogger(FetchUserDataReaderConfig.class);
 
@@ -30,7 +30,7 @@ public class FetchUserDataReaderConfig implements ItemReader<UserDTO> {
     private RestTemplate restTemplate = new RestTemplate();
 
     private int page = 0;
-    private List<UserDTO> users = new ArrayList<>();
+    private List<ClientDTO> users = new ArrayList<>();
     private int userIndex = 0;
 
     @Value("${chunkSize}")
@@ -40,8 +40,8 @@ public class FetchUserDataReaderConfig implements ItemReader<UserDTO> {
     private int pageSize;
 
     @Override
-    public UserDTO read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-        UserDTO user;
+    public ClientDTO read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+        ClientDTO user;
         if (userIndex < users.size()) {
             user = users.get(userIndex);
         } else {
@@ -52,7 +52,7 @@ public class FetchUserDataReaderConfig implements ItemReader<UserDTO> {
         return user;
     }
 
-    private List<UserDTO> fetchUserDataFromAPI() {
+    private List<ClientDTO> fetchUserDataFromAPI() {
         String uri = BASE_URL + "/clients/pagedData?page=%d&size=%d";
 
         logger.info("[READER STEP] Fetching data ...");
@@ -61,8 +61,8 @@ public class FetchUserDataReaderConfig implements ItemReader<UserDTO> {
         ResponseEntity<ResponseUser> response = restTemplate.exchange(String.format(uri, getPage(), pageSize), HttpMethod.GET, null, new ParameterizedTypeReference<ResponseUser>() {
         });
 
-        List<UserDTO> userDTOList = response.getBody().getContent();
-        return userDTOList;
+        List<ClientDTO> clientDTOList = response.getBody().getContent();
+        return clientDTOList;
 
     }
 
